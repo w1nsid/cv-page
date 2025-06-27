@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My CV – Multi-language</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 2rem;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        label,
+        select {
+            font-size: 1.1rem;
+        }
+
+        iframe {
+            margin-top: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>📄 My CV</h1>
+
+    <p>
+        <label for="lang-select">Choose language:</label>
+        <select id="lang-select" onchange="document.getElementById('cv-frame').src = this.value;">
+            <option value="en.pdf">English</option>
+            <option value="fr.pdf">Français</option>
+        </select>
+    </p>
+
+    <iframe id="cv-frame" src="en.pdf" width="100%" height="800px"></iframe>
+
+</body>
+
+</html>
