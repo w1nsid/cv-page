@@ -3,42 +3,265 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>My CV – Multi-language</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdelmoughit Kinani - CV</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            padding: 2rem;
-            max-width: 800px;
-            margin: auto;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
         }
 
-        label,
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .name-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .name-title h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .language-selector {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .language-selector label {
+            font-weight: 600;
+            color: #555;
+        }
+
         select {
-            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        iframe {
-            margin-top: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+        select:hover {
+            border-color: #667eea;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .download-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .pdf-container {
+            height: calc(100vh - 120px);
+            padding: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pdf-viewer {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            background: white;
+        }
+
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin-right: 1rem;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .name-title h1 {
+                font-size: 1.5rem;
+            }
+
+            .controls {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .pdf-container {
+                padding: 0.5rem;
+                height: calc(100vh - 140px);
+            }
         }
     </style>
 </head>
 
 <body>
+    <header class="header">
+        <div class="header-content">
+            <div class="name-title">
+                <i class="fas fa-user-circle" style="font-size: 2.5rem; color: #667eea;"></i>
+                <h1>Abdelmoughit Kinani</h1>
+            </div>
+            <div class="controls">
+                <div class="language-selector">
+                    <i class="fas fa-globe" style="color: #667eea;"></i>
+                    <label for="lang-select">Language:</label>
+                    <select id="lang-select">
+                        <option value="en.pdf">🇺🇸 English</option>
+                        <option value="fr.pdf">🇫🇷 Français</option>
+                    </select>
+                </div>
+                <a href="#" id="download-btn" class="download-btn">
+                    <i class="fas fa-download"></i>
+                    Download CV
+                </a>
+            </div>
+        </div>
+    </header>
 
-    <h1>📄 My CV</h1>
+    <main class="pdf-container">
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            Loading CV...
+        </div>
+        <iframe id="cv-frame" class="pdf-viewer" style="display: none;"></iframe>
+    </main>
 
-    <p>
-        <label for="lang-select">Choose language:</label>
-        <select id="lang-select" onchange="document.getElementById('cv-frame').src = this.value;">
-            <option value="en.pdf">English</option>
-            <option value="fr.pdf">Français</option>
-        </select>
-    </p>
+    <script>
+        const langSelect = document.getElementById('lang-select');
+        const cvFrame = document.getElementById('cv-frame');
+        const downloadBtn = document.getElementById('download-btn');
+        const loading = document.getElementById('loading');
 
-    <iframe id="cv-frame" src="en.pdf" width="100%" height="800px"></iframe>
+        function updateCV() {
+            const selectedFile = langSelect.value;
+            loading.style.display = 'flex';
+            cvFrame.style.display = 'none';
 
+            cvFrame.src = selectedFile;
+            downloadBtn.href = selectedFile;
+
+            // Update download filename
+            const lang = selectedFile.includes('en.pdf') ? 'English' : 'Français';
+            downloadBtn.download = `Abdelmoughit_Kinani_CV_${lang}.pdf`;
+        }
+
+        cvFrame.onload = function () {
+            loading.style.display = 'none';
+            cvFrame.style.display = 'block';
+        };
+
+        langSelect.addEventListener('change', updateCV);
+
+        // Initialize
+        updateCV();
+
+        // Add smooth scrolling and animations
+        document.addEventListener('DOMContentLoaded', function () {
+            const header = document.querySelector('.header');
+            let lastScrollTop = 0;
+
+            window.addEventListener('scroll', function () {
+                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                if (scrollTop > lastScrollTop) {
+                    header.style.transform = 'translateY(-100%)';
+                } else {
+                    header.style.transform = 'translateY(0)';
+                }
+                lastScrollTop = scrollTop;
+            });
+        });
+    </script>
 </body>
 
 </html>
