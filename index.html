@@ -55,6 +55,21 @@
             background-clip: text;
         }
 
+        .profile-picture {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid #667eea;
+            object-fit: cover;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .profile-picture:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
         .controls {
             display: flex;
             align-items: center;
@@ -188,7 +203,9 @@
     <header class="header">
         <div class="header-content">
             <div class="name-title">
-                <i class="fas fa-user-circle" style="font-size: 2.5rem; color: #667eea;"></i>
+                <img src="profile-picture.jpg" alt="Abdelmoughit Kinani" class="profile-picture"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+                <i class="fas fa-user-circle" style="font-size: 5rem; color: #667eea; display: none;"></i>
                 <h1>Abdelmoughit Kinani</h1>
             </div>
             <div class="controls">
